@@ -6,7 +6,7 @@ public enum WordCase {
     INS("I", "Instrumentalis", "Творительный"),
     DAT("D", "Dativus", "Дательный"),
     ABL("Abl", "Ablativus", "Отложительный"),
-    GER("G", "Genetivus", "Родительный"),
+    GEN("G", "Genetivus", "Родительный"),
     LOC("L", "Locativus", "Местный"),
     VOC("Voc", "Vocativus", "Звательный");
 
