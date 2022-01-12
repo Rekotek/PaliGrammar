@@ -1,6 +1,8 @@
 package com.scriptorium.pali.enums;
 
-public enum EndingType {
+import com.scriptorium.pali.common.HtmlOutput;
+
+public enum EndingType implements HtmlOutput {
     SHORT_A("a"),
     LONG_A("ā"),
     SHORT_I("i"),
@@ -12,5 +14,15 @@ public enum EndingType {
 
     EndingType(String endings) {
         this.end = endings;
+    }
+
+    @Override
+    public String toString() {
+        return "-" + end;
+    }
+
+    @Override
+    public String toHtml() {
+        return "-<strong>" + end + "</strong> ";
     }
 }

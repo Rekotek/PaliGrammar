@@ -10,6 +10,13 @@ public enum WordCase {
     LOC("L", "Locativus", "Местный"),
     VOC("Voc", "Vocativus", "Звательный");
 
+    private final String symbol;
+
     WordCase(String symbol, String longDefinition, String rusDefinition) {
+        this.symbol = symbol;
+    }
+
+    public String getSymbol() {
+        return symbol;
     }
 }
