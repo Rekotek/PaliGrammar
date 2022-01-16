@@ -12,8 +12,7 @@ import java.util.List;
 import static com.scriptorium.pali.enums.NumberType.PL;
 import static com.scriptorium.pali.enums.NumberType.SG;
 import static com.scriptorium.pali.enums.WordCase.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.*;
 
 class NounCasesTest {
 
@@ -55,7 +54,9 @@ class NounCasesTest {
         var purisa = new NounCases("purisa", Gender.MUSCLE);
         Arrays.stream(WordCase.values()).forEach(wordCase -> {
             var sgForms = purisa.getFormsFor(wordCase, SG);
+            assertNotNull(sgForms);
             var plForms = purisa.getFormsFor(wordCase, PL);
+            assertNotNull(plForms);
             System.out.printf("%s\t", wordCase.getSymbol());
             sgForms.forEach(s -> System.out.printf("%s ", s));
             System.out.print("\t|\t");

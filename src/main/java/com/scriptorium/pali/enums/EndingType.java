@@ -8,7 +8,9 @@ public enum EndingType implements HtmlOutput {
     SHORT_I("i"),
     LONG_I("ī"),
     SHORT_U("u"),
-    LONG_U("ū");
+    LONG_U("ū"),
+    VANT("vant"),
+    MANT("mant");
 
     private final String end;
 
