@@ -1,4 +1,4 @@
-package com.scriptorium.pali;
+package com.scriptorium.pali.common;
 
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;

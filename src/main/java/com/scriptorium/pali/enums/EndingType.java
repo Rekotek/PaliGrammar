@@ -10,7 +10,8 @@ public enum EndingType implements HtmlOutput {
     SHORT_U("u"),
     LONG_U("ū"),
     VANT("vant"),
-    MANT("mant");
+    MANT("mant"),
+    AR("ar");
 
     private final String end;
 
@@ -20,7 +21,7 @@ public enum EndingType implements HtmlOutput {
 
     @Override
     public String toString() {
-        return "-" + end;
+        return end;
     }
 
     @Override

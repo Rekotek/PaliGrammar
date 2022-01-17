@@ -1,9 +1,10 @@
 package com.scriptorium.pali;
 
+import com.scriptorium.pali.common.EndingDescription;
+import com.scriptorium.pali.common.NounDescription;
 import com.scriptorium.pali.enums.Gender;
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;
-import com.scriptorium.pali.tables.SimpleAMaleConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,42 +15,34 @@ import static com.scriptorium.pali.enums.NumberType.PL;
 import static com.scriptorium.pali.enums.NumberType.SG;
 
 public class NounCases {
-    private final String givenWord;
-    private final Gender gender;
     private final String simplifiedWord;
-    private final String ending;
+    private final EndingDescription endingDescription;
 
     public NounCases(String dhatu, Gender wordGender) {
-        this.givenWord = dhatu;
-        this.gender = wordGender;
-        if (dhatu.endsWith("a")) {
-            ending = "a";
-            simplifiedWord = dhatu.substring(0, dhatu.length() - 1);
-        } else {
-            throw new IllegalArgumentException("No Ending forms found");
-        }
+        var endingType = EndingTypeHelper.indentify(dhatu);
+        this.endingDescription = new EndingDescription(endingType, wordGender);
+        var ending = endingType.toString();
+        this.simplifiedWord = dhatu.substring(0, dhatu.length() - ending.length());
     }
 
     public List<String> getFormsFor(WordCase wordCase, NumberType numberType) {
         List<String> endings;
+        endings = EndingFullFormsHelper
+                .getFormsOfNumberType(endingDescription, numberType)
+                .get(wordCase);
 
-        if (numberType == SG) {
-            endings = SimpleAMaleConstants.SINGULAR_FORM.get(wordCase);
-        } else {
-            endings = SimpleAMaleConstants.PLURAL_FORM.get(wordCase);
-        }
-
-        return endings.stream().map(s ->
-                simplifiedWord + s
-        ).collect(Collectors.toList());
+        return endings.stream().map(s -> simplifiedWord + s).collect(Collectors.toList());
     }
 
     public List<NounDescription> getPossibleCasesFor(String givenForm) {
         var resultSgList =
-                retrieveCases(SimpleAMaleConstants.SINGULAR_FORM, givenForm);
-
+                retrieveCases(
+                        EndingFullFormsHelper.getFormsOfNumberType(endingDescription, SG), givenForm
+                );
         var resultPlList =
-                retrieveCases(SimpleAMaleConstants.PLURAL_FORM, givenForm);
+                retrieveCases(
+                        EndingFullFormsHelper.getFormsOfNumberType(endingDescription, PL), givenForm
+                );
 
         var resultAllCases = new ArrayList<NounDescription>();
         resultSgList.forEach(wordCase -> resultAllCases.add(new NounDescription(wordCase, SG)));
