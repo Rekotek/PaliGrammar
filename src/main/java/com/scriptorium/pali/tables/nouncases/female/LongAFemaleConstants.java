@@ -1,4 +1,4 @@
-package com.scriptorium.pali.tables;
+package com.scriptorium.pali.tables.nouncases.female;
 
 import com.scriptorium.pali.enums.WordCase;
 
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.scriptorium.pali.enums.WordCase.*;
-import static com.scriptorium.pali.enums.WordCase.VOC;
 
 public class LongAFemaleConstants {
     public static final Map<WordCase, List<String>> SINGULAR_FORM = Map.of(

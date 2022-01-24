@@ -1,6 +1,8 @@
 package com.scriptorium.pali.enums;
 
-public enum WordForm {
+import com.scriptorium.pali.common.GrammarDefinitions;
+
+public enum WordForm implements GrammarDefinitions {
     NOUN("", "noun", "существительное"),
     ADJ("adj", "adjective", "прилагательное"),
     ADV("adv", "adverb", "наречие"),
@@ -14,7 +16,28 @@ public enum WordForm {
     FUT("fut", "future", "будущее время"),
     VERB("v", "verb", "глагол");
 
-    WordForm(String symbol, String longDefinition, String rusDefinition) {
+    private final String symbol;
+    private final String longDefinition;
+    private final String rusDefinition;
+
+    WordForm(String smb, String lng, String rus) {
+        this.symbol = smb;
+        this.longDefinition = lng;
+        this.rusDefinition = rus;
     }
 
+    @Override
+    public String getLongDefinition() {
+        return this.longDefinition;
+    }
+
+    @Override
+    public String getRusDefinition() {
+        return this.rusDefinition;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
 }

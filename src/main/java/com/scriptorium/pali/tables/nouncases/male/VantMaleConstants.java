@@ -1,4 +1,4 @@
-package com.scriptorium.pali.tables;
+package com.scriptorium.pali.tables.nouncases.male;
 
 import com.scriptorium.pali.enums.WordCase;
 

@@ -5,6 +5,7 @@ import com.scriptorium.pali.common.NounDescription;
 import com.scriptorium.pali.enums.Gender;
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;
+import com.scriptorium.pali.tables.EndingFullFormsHelper;
 
 import java.util.ArrayList;
 import java.util.List;

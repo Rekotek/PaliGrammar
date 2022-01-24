@@ -92,6 +92,15 @@ class NounCasesTest {
     }
 
     @Test
+    @DisplayName("Not found possible forms")
+    public void notFoundPossibleForms() {
+        var dhamma = new NounCases("dhamma", Gender.MUSCLE);
+        List<NounDescription> impossible = dhamma.getPossibleCasesFor("impossible");
+        assertNotNull(impossible);
+        assertEquals(0, impossible.size());
+    }
+
+    @Test
     @Disabled("Just for printing forms")
     @DisplayName("Print all forms for 'purisa': male '-a'")
     void printPurisa() {

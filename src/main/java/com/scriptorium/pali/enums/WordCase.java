@@ -1,6 +1,9 @@
 package com.scriptorium.pali.enums;
 
-public enum WordCase {
+import com.scriptorium.pali.common.GrammarDefinitions;
+import com.scriptorium.pali.common.HtmlOutput;
+
+public enum WordCase implements HtmlOutput, GrammarDefinitions {
     NOM("N", "Nominativus", "Именительный"),
     ACC("A", "Accusativus", "Винительный"),
     INS("I", "Instrumentalis", "Творительный"),
@@ -11,12 +14,31 @@ public enum WordCase {
     VOC("Voc", "Vocativus", "Звательный");
 
     private final String symbol;
+    private final String longDefinition;
+    private final String rusDefinition;
 
-    WordCase(String symbol, String longDefinition, String rusDefinition) {
-        this.symbol = symbol;
+    WordCase(String smb, String lng, String rus) {
+        this.symbol = smb;
+        this.longDefinition = lng;
+        this.rusDefinition = rus;
     }
 
     public String getSymbol() {
+        return symbol;
+    }
+
+    @Override
+    public String getLongDefinition() {
+        return this.longDefinition;
+    }
+
+    @Override
+    public String getRusDefinition() {
+        return this.rusDefinition;
+    }
+
+    @Override
+    public String toHtml() {
         return symbol;
     }
 }

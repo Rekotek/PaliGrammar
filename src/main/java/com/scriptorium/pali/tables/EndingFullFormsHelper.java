@@ -1,9 +1,11 @@
-package com.scriptorium.pali;
+package com.scriptorium.pali.tables;
 
 import com.scriptorium.pali.common.EndingDescription;
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;
-import com.scriptorium.pali.tables.*;
+import com.scriptorium.pali.tables.nouncases.female.*;
+import com.scriptorium.pali.tables.nouncases.male.*;
+import com.scriptorium.pali.tables.nouncases.neutral.*;
 
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.List;
