@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static com.scriptorium.pali.enums.WordCase.*;
 
-public class RelativeNeutral {
+public class RelativeNeutralConstants {
     public static final Map<WordCase, List<String>> SINGULAR_FORM = Map.of(
             NOM, List.of("yaṃ", "yad"),
             ACC, List.of("yaṃ", "yad"),
@@ -28,5 +28,5 @@ public class RelativeNeutral {
 
     public static final List<Map<WordCase, List<String>>> ALL_FORMS = List.of(SINGULAR_FORM, PLURAL_FORM);
 
-    private RelativeNeutral() { }
+    private RelativeNeutralConstants() { }
 }

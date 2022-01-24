@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static com.scriptorium.pali.enums.WordCase.*;
 
-public class ThirdNeutralPerson {
+public class ThirdNeutralPersonConstants {
     public static final Map<WordCase, List<String>> SINGULAR_FORM = Map.of(
             NOM, List.of("taṃ", "tad"),
             ACC, List.of("taṃ", "tad"),

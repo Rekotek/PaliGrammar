@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static com.scriptorium.pali.enums.WordCase.*;
 
-public class SecondPerson {
+public class SecondPersonConstants {
     public static final Map<WordCase, List<String>> SINGULAR_FORM = Map.of(
             NOM, List.of("tvaṃ"),
             ACC, List.of("taṃ", "tvaṃ", "tuvaṃ", "tavaṃ"),
@@ -28,5 +28,5 @@ public class SecondPerson {
 
     public static final List<Map<WordCase, List<String>>> ALL_FORMS = List.of(SINGULAR_FORM, PLURAL_FORM);
 
-    private SecondPerson() { }
+    private SecondPersonConstants() { }
 }

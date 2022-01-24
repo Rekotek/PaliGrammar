@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static com.scriptorium.pali.enums.WordCase.*;
 
-public class RelativeFemale {
+public class RelativeFemaleConstants {
     public static final Map<WordCase, List<String>> SINGULAR_FORM = Map.of(
             NOM, List.of("yā"),
             ACC, List.of("yaṃ"),
@@ -28,5 +28,5 @@ public class RelativeFemale {
 
     public static final List<Map<WordCase, List<String>>> ALL_FORMS = List.of(SINGULAR_FORM, PLURAL_FORM);
 
-    private RelativeFemale() { }
+    private RelativeFemaleConstants() { }
 }

@@ -6,7 +6,7 @@
 
     <groupId>com.scriptorium.pali</groupId>
     <artifactId>grammar-forms</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 
     <packaging>jar</packaging>
 
