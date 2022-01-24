@@ -14,7 +14,8 @@ public enum WordForm implements GrammarDefinitions {
     GER("ger", "gerund", "герундий"),
     INF("inf", "infinitive", "инфинитив"),
     FUT("fut", "future", "будущее время"),
-    VERB("v", "verb", "глагол");
+    VERB("v", "verb", "глагол"),
+    PRON("pron", "pronoun", "местоимение");
 
     private final String symbol;
     private final String longDefinition;
