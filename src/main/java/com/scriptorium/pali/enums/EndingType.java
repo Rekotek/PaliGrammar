@@ -11,7 +11,8 @@ public enum EndingType implements HtmlOutput {
     LONG_U("ū"),
     VANT("vant"),
     MANT("mant"),
-    AR("ar");
+    AR("ar"),
+    IN("in");
 
     private final String end;
 

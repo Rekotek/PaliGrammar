@@ -71,4 +71,12 @@ public class NounEndingTypeTest {
         assertEquals(EndingType.MANT, resultType);
     }
 
+    @Test
+    @DisplayName("Define ending type by given dhatu -in")
+    public void testIn() {
+        var givenWord = "miccharin";
+        var resultType =EndingTypeHelper.indentify(givenWord);
+        assertEquals(EndingType.IN, resultType);
+    }
+
 }

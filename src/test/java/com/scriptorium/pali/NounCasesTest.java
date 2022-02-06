@@ -135,4 +135,22 @@ class NounCasesTest {
             System.out.println();
         });
     }
+
+    @Test
+    @Disabled("Print forms")
+    @DisplayName("Print all forms for 'maccharin': neutral '-in'")
+    void printMaccharin() {
+        var maccharin = new NounCases("maccharin", Gender.NEUTRAL);
+        Arrays.stream(WordCase.values()).forEach(wordCase -> {
+            var sgForms = maccharin.getFormsFor(wordCase, SG);
+            assertNotNull(sgForms);
+            var plForms = maccharin.getFormsFor(wordCase, PL);
+            assertNotNull(plForms);
+            System.out.printf("%s\t", wordCase.getSymbol());
+            sgForms.forEach(s -> System.out.printf("%s ", s));
+            System.out.print("\t|\t");
+            plForms.forEach(s -> System.out.printf("%s ", s));
+            System.out.println();
+        });
+    }
 }

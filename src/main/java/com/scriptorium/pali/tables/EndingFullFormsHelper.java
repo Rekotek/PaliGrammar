@@ -51,15 +51,25 @@ public class EndingFullFormsHelper {
             new SimpleImmutableEntry<>(
                     new EndingDescription(VANT, NEUTRAL), VantNeutralConstants.ALL_FORMS),
             new SimpleImmutableEntry<>(
-                    new EndingDescription(VANT, FEMALE), VantFemaleConstants.ALL_FORMS)
+                    new EndingDescription(VANT, FEMALE), VantFemaleConstants.ALL_FORMS),
+            new SimpleImmutableEntry<>(
+                    new EndingDescription(IN, MUSCLE), InMaleConstants.ALL_FORMS),
+            new SimpleImmutableEntry<>(
+                    new EndingDescription(IN, NEUTRAL), InNeutralConstants.ALL_FORMS),
+            new SimpleImmutableEntry<>(
+                    new EndingDescription(IN, FEMALE), InFemaleConstants.ALL_FORMS)
             );
 
+    /**
+     * @param endingDescription end type + gender tyoe
+     * @return List of 2 maps declension -> possible ends, where List.get(0) - SG; List.get(1) - PL
+     */
     public static List<Map<WordCase, List<String>>> getAllForms(EndingDescription endingDescription) {
         return FULL_CASES.get(endingDescription);
     }
 
     public static Map<WordCase, List<String>> getFormsOfNumberType(EndingDescription endingDescription, NumberType numberType) {
-        return FULL_CASES.get(endingDescription).get(numberType.ordinal());
+        return getAllForms(endingDescription).get(numberType.ordinal());
     }
 
     private EndingFullFormsHelper() { }

@@ -10,10 +10,10 @@ import com.scriptorium.pali.tables.EndingFullFormsHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static com.scriptorium.pali.enums.NumberType.PL;
 import static com.scriptorium.pali.enums.NumberType.SG;
+import static java.util.stream.Collectors.toList;
 
 public class NounCases {
     private final String simplifiedWord;
@@ -31,8 +31,7 @@ public class NounCases {
         endings = EndingFullFormsHelper
                 .getFormsOfNumberType(endingDescription, numberType)
                 .get(wordCase);
-
-        return endings.stream().map(s -> simplifiedWord + s).collect(Collectors.toList());
+        return endings.stream().map(s -> simplifiedWord + s).collect(toList());
     }
 
     public List<NounDescription> getPossibleCasesFor(String givenForm) {
@@ -53,14 +52,14 @@ public class NounCases {
 
     private List<WordCase> retrieveCases(Map<WordCase, List<String>> wordForms, String givenForm) {
         return wordForms.entrySet()
-                .stream().filter(wordCaseListEntry -> checkPossibleCases(givenForm, wordCaseListEntry))
+                .stream()
+                .filter(wordCaseListEntry -> checkPossibleCases(givenForm, wordCaseListEntry.getValue()))
                 .map(Map.Entry::getKey)
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
-    private boolean checkPossibleCases(String givenForm, Map.Entry<WordCase, List<String>> wordCaseListEntry) {
-        List<String> endingForms = wordCaseListEntry.getValue();
+    private boolean checkPossibleCases(String givenForm, List<String> endingForms) {
         boolean found = false;
         for (var ending : endingForms) {
             if (givenForm.equals(simplifiedWord + ending)) {
