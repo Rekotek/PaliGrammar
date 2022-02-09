@@ -153,4 +153,13 @@ class NounCasesTest {
             System.out.println();
         });
     }
+
+    @Test
+    @Disabled
+    void printAllForms() {
+        var dhamma = new NounCases("dhamma", Gender.MUSCLE);
+//        Map<WordCase, List<String>> casesForSingular = dhamma.getAllCasesForNumber(SG);
+//        casesForSingular.forEach((wordCase, list) -> System.out.printf("%s = %s\n", wordCase, list));
+        System.out.println(dhamma.toHtml());
+    }
 }

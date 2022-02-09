@@ -8,7 +8,7 @@ public enum WordCase implements HtmlOutput, GrammarDefinitions {
     ACC("A", "Accusativus", "Винительный"),
     INS("I", "Instrumentalis", "Творительный"),
     DAT("D", "Dativus", "Дательный"),
-    ABL("Abl", "Ablativus", "Отложительный"),
+    ABL("Ab", "Ablativus", "Отложительный"),
     GEN("G", "Genetivus", "Родительный"),
     LOC("L", "Locativus", "Местный"),
     VOC("Voc", "Vocativus", "Звательный");
