@@ -69,7 +69,9 @@ public class EndingFullFormsHelper {
     }
 
     public static Map<WordCase, List<String>> getFormsOfNumberType(EndingDescription endingDescription, NumberType numberType) {
-        return getAllForms(endingDescription).get(numberType.ordinal());
+        var mapOfForms = getAllForms(endingDescription);
+        if (mapOfForms == null) return null;
+        return mapOfForms.get(numberType.ordinal());
     }
 
     private EndingFullFormsHelper() { }

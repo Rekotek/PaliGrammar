@@ -3,6 +3,7 @@ package com.scriptorium.pali;
 import com.scriptorium.pali.common.EndingDescription;
 import com.scriptorium.pali.common.HtmlOutput;
 import com.scriptorium.pali.common.NounDescription;
+import com.scriptorium.pali.enums.EndingType;
 import com.scriptorium.pali.enums.Gender;
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;
@@ -21,6 +22,10 @@ public class NounCases implements HtmlOutput {
 
     public NounCases(String dhatu, Gender wordGender) {
         var endingType = EndingTypeHelper.indentify(dhatu);
+        //In case of adj like "akusala" female
+        if (endingType == EndingType.SHORT_A && wordGender == Gender.FEMALE) {
+            endingType = EndingType.LONG_A;
+        }
         this.endingDescription = new EndingDescription(endingType, wordGender);
         var ending = endingType.toString();
         this.simplifiedWord = dhatu.substring(0, dhatu.length() - ending.length());
@@ -88,24 +93,24 @@ public class NounCases implements HtmlOutput {
     @Override
     public String toHtml() {
         var result = new StringBuilder(simplifiedWord.length() * 4);
-        result.append("<code>=== Sg ===\n");
+        result.append("<code>=== Sg ===</code>\n");
         final var casesForSingular = getAllCasesForNumber(SG);
         appendCases(result, casesForSingular);
-        result.append("=== Pl ===\n");
+        result.append("<code>=== Pl ===</code>\n");
         final var casesForPlural = getAllCasesForNumber(PL);
         appendCases(result, casesForPlural);
-        result.append("</code>");
         return result.toString();
     }
 
     private void appendCases(StringBuilder result, SortedMap<WordCase, List<String>> casesForSingular) {
         casesForSingular.forEach((wordCase, list) -> {
+            result.append("<code>");
             result.append(wordCase.toHtml());
-            result.append(": ");
+            result.append(": </code><b>");
             String joinedString = list.toString();
             String oneLine = joinedString.substring(1, joinedString.length() - 1);
             result.append(oneLine);
-            result.append("\n");
+            result.append("</b>\n");
         });
     }
 

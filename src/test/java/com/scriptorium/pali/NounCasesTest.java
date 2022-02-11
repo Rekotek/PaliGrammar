@@ -101,6 +101,17 @@ class NounCasesTest {
     }
 
     @Test
+    @DisplayName("Found bug when enter akusala and f")
+    public void incorrectFemaleOnA() {
+        var akusala = new NounCases("akusala", Gender.FEMALE);
+        var mapOfCases = akusala.getAllCasesForNumber(SG);
+        assertNotNull(mapOfCases);
+        mapOfCases.forEach((wordCase, list) -> System.out.printf("%s -> %s\n", wordCase, list));
+    }
+
+
+
+    @Test
     @Disabled("Just for printing forms")
     @DisplayName("Print all forms for 'purisa': male '-a'")
     void printPurisa() {
@@ -158,8 +169,6 @@ class NounCasesTest {
     @Disabled
     void printAllForms() {
         var dhamma = new NounCases("dhamma", Gender.MUSCLE);
-//        Map<WordCase, List<String>> casesForSingular = dhamma.getAllCasesForNumber(SG);
-//        casesForSingular.forEach((wordCase, list) -> System.out.printf("%s = %s\n", wordCase, list));
         System.out.println(dhamma.toHtml());
     }
 }
