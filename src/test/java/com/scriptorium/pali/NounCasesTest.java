@@ -3,6 +3,8 @@ package com.scriptorium.pali;
 import com.scriptorium.pali.common.NounDescription;
 import com.scriptorium.pali.enums.Gender;
 import com.scriptorium.pali.enums.WordCase;
+import com.scriptorium.pali.exceptions.UnknownEndingGenderException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -109,7 +111,21 @@ class NounCasesTest {
         mapOfCases.forEach((wordCase, list) -> System.out.printf("%s -> %s\n", wordCase, list));
     }
 
+    @Test
+    @DisplayName("Forms for 'satthar'")
+    public void getSatthar() {
+        var satthar = new NounCases("satthar", Gender.MUSCLE);
+        var mapOfCases = satthar.getAllCasesForNumber(SG);
+        assertNotNull(mapOfCases);
+        mapOfCases.forEach((wordCase, list) -> System.out.printf("%s -> %s\n", wordCase, list));
+    }
 
+    @Test
+    @DisplayName("Impossible ending for given gender")
+    public void impossibleForm() {
+        var exception = Assertions.assertThrows(UnknownEndingGenderException.class, () -> new NounCases("satthar", Gender.NEUTRAL));
+        System.out.println(exception.getMessage());
+    }
 
     @Test
     @Disabled("Just for printing forms")

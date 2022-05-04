@@ -7,6 +7,7 @@ import com.scriptorium.pali.enums.EndingType;
 import com.scriptorium.pali.enums.Gender;
 import com.scriptorium.pali.enums.NumberType;
 import com.scriptorium.pali.enums.WordCase;
+import com.scriptorium.pali.exceptions.UnknownEndingGenderException;
 import com.scriptorium.pali.tables.EndingFullFormsHelper;
 
 import java.util.*;
@@ -22,11 +23,15 @@ public class NounCases implements HtmlOutput {
 
     public NounCases(String dhatu, Gender wordGender) {
         var endingType = EndingTypeHelper.indentify(dhatu);
+
         //In case of adj like "akusala" female
         if (endingType == EndingType.SHORT_A && wordGender == Gender.FEMALE) {
             endingType = EndingType.LONG_A;
         }
         this.endingDescription = new EndingDescription(endingType, wordGender);
+        if (!EndingTypeHelper.checkEndingWithGender(this.endingDescription)) {
+            throw new UnknownEndingGenderException(this.endingDescription);
+        }
         var ending = endingType.toString();
         this.simplifiedWord = dhatu.substring(0, dhatu.length() - ending.length());
     }

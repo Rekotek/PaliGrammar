@@ -57,7 +57,11 @@ public class EndingFullFormsHelper {
             new SimpleImmutableEntry<>(
                     new EndingDescription(IN, NEUTRAL), InNeutralConstants.ALL_FORMS),
             new SimpleImmutableEntry<>(
-                    new EndingDescription(IN, FEMALE), InFemaleConstants.ALL_FORMS)
+                    new EndingDescription(IN, FEMALE), InFemaleConstants.ALL_FORMS),
+            new SimpleImmutableEntry<>(
+                    new EndingDescription(AR, MUSCLE), ArMaleConstants.ALL_FORMS),
+            new SimpleImmutableEntry<>(
+                    new EndingDescription(AR, FEMALE), ArFemaleConstants.ALL_FORMS)
             );
 
     /**

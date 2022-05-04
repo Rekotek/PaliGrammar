@@ -21,11 +21,11 @@ public class ShortIMaleConstants {
     public static final Map<WordCase, List<String>> PLURAL_FORM = Map.of(
             NOM, List.of("ī", "ayo"),
             ACC, List.of("ī", "ayo"),
-            INS, List.of("īhi", "ībhi"),
-            DAT, List.of("īnaṃ"),
-            ABL, List.of("īhi", "ībhi"),
-            GEN, List.of("īnaṃ"),
-            LOC, List.of("īsu"),
+            INS, List.of("īhi", "ībhi", "ihi", "ibhi"),
+            DAT, List.of("īnaṃ", "inaṃ"),
+            ABL, List.of("īhi", "ībhi", "ihi", "ibhi"),
+            GEN, List.of("īnaṃ", "inaṃ"),
+            LOC, List.of("īsu", "isu"),
             VOC, List.of("ī", "ayo"));
 
     public static final List<Map<WordCase, List<String>>> ALL_FORMS = List.of(SINGULAR_FORM, PLURAL_FORM);
